@@ -13,12 +13,12 @@ read -r -p "What number Feature would you like to use?\n1.Delete Temp File?\n2.F
 	    haskellFind=$(find ~/CS1XA3/ -name "*.hs" | wc -l)
 	    bashFind=$(find ~/CS1XA3/ -name "*.sh" | wc -l)
 
-	    echo $htmlFile
-	    echo $javaFile
-	    echo $cssFile
-	    echo $pyFile
-	    echo $haskellFile
-	    echo $bashFile
+	    echo HTML  : $htmlFile
+	    echo JAVA  : $javaFile
+	    echo CSS   : $cssFile
+	    echo Python: $pyFile
+	    echo HASKEL: $haskellFile
+	    echo BASH  : $bashFile
 
         elif [ $featName == 1 ]; then
             echo this is feat 1
