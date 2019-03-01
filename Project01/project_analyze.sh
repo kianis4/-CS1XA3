@@ -1,7 +1,4 @@
 #!/bin/bash
-erin=0
-while [ erin=1 ]
-do
 read -r -p "What number Feature would you like to use?\n1.Delete Temp File?\n2.File Type count?" featName
 
         if [ $featName == 2 ]; then
@@ -22,10 +19,8 @@ read -r -p "What number Feature would you like to use?\n1.Delete Temp File?\n2.F
 
         elif [ $featName == 1 ]; then
             echo this is feat 1
-	    erin=0
         else
 	    echo Error, incorrect input. Please choose a number feature you would like to use.
-	    erin=1
 	fi
 done
 
