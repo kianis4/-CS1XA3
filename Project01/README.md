@@ -18,3 +18,7 @@ This feature allows the user to display how many of each type of file (py,hs,htm
 ### 3. Compile Error Log
 
 This feature checks through the directory for Haskell and python files and checks to see if they can execute. All files with syntacx erros are added into a file called compile_fail_log.log. When used the feature will display this file.
+
+### 4. Create and append to File
+
+This feature allows the user to create a file. It will prompt the user to enter the name they would like to give the file with the extension. The user will then be asked if they would like to add something to the file. They can add as many items as they wish. They will then be asked if they want to display the file.
