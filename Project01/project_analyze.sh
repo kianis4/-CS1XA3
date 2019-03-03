@@ -2,11 +2,10 @@
 
 REPO_ROOT_PATH="../"
 
-echo -e "What number Feature would you like to use?\n1.Display #TODO lines?\n2.File Type Count?"
+echo -e "What number Feature would you like to use?\n1.Display #TODO lines?\n2.File Type Count?\n3.Compile Fail log?\n4.Custom Feature?"
 read -r featName
 
         if [ $featName == 2 ]; then
-	    erin=0
             htmlFind=$(find ~/CS1XA3/ -name "*.html" | wc -l)
 	    javaFind=$(find ~/CS1XA3/ -name "*.js" | wc -l)
 	    cssFind=$(find ~/CS1XA3/ -name "*.css" | wc -l)
@@ -29,6 +28,23 @@ read -r featName
                 echo -e "Here is #TODO:"
                 cat todo.log
              fi
+
+	elif [ $featName == 3 ]; then
+
+
+	     echo "Here are Haskell and python files that do not compile:" > compile_fail_log.log
+	     find ~/CS1XA3/ -name "*.hs" | xargs -I {} ghc -fno-code {} &> compile_fail_log.log
+	     find ~/CS1XA3/ -name "*.py" | while read -r fileli; do
+		  if ! python -Bm py_compile $fileli &> /dev/null; then
+			echo $fileli >> compile_fail_log.log
+		  fi
+		  rm -f "${line%??}pyc"
+	     cat compile_fail_log.log
+	done
+
+	elif [$featName == 4 ]; then
+	     
+
         else
 	    echo Error, incorrect input. Please choose a number feature you would like to use.
 	fi
