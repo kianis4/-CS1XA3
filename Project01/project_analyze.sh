@@ -2,7 +2,7 @@
 
 REPO_ROOT_PATH="../"
 
-echo -e "What number Feature would you like to use?\n1.Display #TODO lines?\n2.File Type Count?\n3.Compile Fail log?\n4.Custom Feature?"
+echo -e "What number Feature would you like to use?\n1.Display #TODO lines?\n2.File Type Count?\n3.Compile Fail log?\n4.Create File with text?"
 read -r featName
 
         if [ $featName == 2 ]; then
@@ -38,15 +38,30 @@ read -r featName
 		  if ! python -Bm py_compile $fileli &> /dev/null; then
 			echo $fileli >> compile_fail_log.log
 		  fi
-		  rm -f "${line%??}pyc"
+		  rm -f "${fileli%??}pyc"
 	     cat compile_fail_log.log
 	done
 
-	elif [$featName == 4 ]; then
-	     
+	elif [ $featName == 4 ]; then
+
+
+	read -p "What would you like to name your file (Ensure extension of file is added)? " filename
+            	touch $filename
+            	read -p "Would you like to add anything to $name? (Y/N) " x
+            	while [ $x != "N" ]
+            	do
+                	read -p "Please enter text: " text
+                	echo -e "$text\n" >> $filename #adds each entry onto it's own line
+                	read -p "Would you like to add another line? (Y/N) " x
+            	done
+            	read -p "Would you like to view $name? (Y/N) " n
+            	if [ $n == "Y" ]
+            	then
+                	cat $filename
+            	fi
 
         else
 	    echo Error, incorrect input. Please choose a number feature you would like to use.
 	fi
-
 echo Thank you!
+
