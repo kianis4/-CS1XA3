@@ -1,0 +1,19 @@
+[25/Mar/2019 00:43:14] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 00:43:15] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+Not Found: /e/kianis4
+[25/Mar/2019 00:43:37] "GET /e/kianis4 HTTP/1.1" 404 1984
+[25/Mar/2019 00:43:57] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 00:43:57] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 00:44:06] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 00:44:08] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+[25/Mar/2019 00:44:12] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+March 25, 2019 - 00:43:00
+Django version 2.1.7, using settings 'django_project.settings'
+Starting development server at http://localhost:10029/
+Quit the server with CONTROL-C.
