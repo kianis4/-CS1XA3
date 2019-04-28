@@ -17,3 +17,29 @@ March 25, 2019 - 00:43:00
 Django version 2.1.7, using settings 'django_project.settings'
 Starting development server at http://localhost:10029/
 Quit the server with CONTROL-C.
+Traceback (most recent call last):
+  File "manage.py", line 8, in <module>
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "manage.py", line 14, in <module>
+    ) from exc
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+[25/Mar/2019 19:54:36] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+[25/Mar/2019 19:54:40] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 19:54:59] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 19:55:05] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 19:55:08] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+[25/Mar/2019 19:55:13] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 19:55:28] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 20:56:28] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+[25/Mar/2019 20:56:44] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+Not Found: /e/kianis4
+[25/Mar/2019 22:35:07] "GET /e/kianis4 HTTP/1.1" 404 1984
+[25/Mar/2019 22:35:28] "POST /e/kianis4/lab7/ HTTP/1.1" 200 4
+[25/Mar/2019 22:35:32] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+[25/Mar/2019 22:35:38] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13
+[25/Mar/2019 22:35:39] "POST /e/kianis4/lab7/ HTTP/1.1" 200 13

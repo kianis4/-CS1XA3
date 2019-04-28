@@ -1,0 +1,16 @@
+    
+    <h2>Whack a Button</h2>
+    
+    
+    <a href="{% url 'signup' %}?next={% url 'main_game' %}"> signup <a> <br>
+    <a href="{% url 'login' %}"> login <a> <br>
+
+        <p>
+            {% if user.is_authenticated %}
+            Welcome 
+            '{{ user.username }}', <a href="{% url 'main_game' %}" > game <a><br>
+            <a href="{% url 'logout' %}"> logout <a> <br>
+            {% else %}
+            <a href="{% url 'login' %}">Please login first</a>
+            {% endif %}
+        </p> 

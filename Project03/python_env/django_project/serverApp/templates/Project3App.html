@@ -1,0 +1,185 @@
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<style>
+	/* */
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<body>
+
+<div class="container-fluid">
+	<!---->
+  <h1>The Whack a Button!</h1>
+  <p>Hit start when you are ready! Game accesible on any screen size!</p>
+  <p>The object of the gsme is to click as many buttons as you can before the time runs out! You are pitted against all other players who have logged in. You have 15 seconds, Goodluck! Click Get score to pull your highest score and the highest by any player on the server!</p>
+  <div class="row">
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_11">11</button></div>
+		
+    <div class="col-xs-3" style="background-color:lavenderblush;"><button class="btn btn-success" id="btn_12">12</button></div>
+    <div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_13">13</button></div>
+    <div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_14">14</button></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success"  id="btn_21">21</button></div>
+
+		<div class="col-xs-3" style="background-color:lavenderblush;"><button class="btn btn-success"  id="btn_22">22</button></div>
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_23">23</button></div>
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_24">24</button></div>
+	</div>	
+
+	<div class="row">
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_31">31</button></div>
+
+		<div class="col-xs-3" style="background-color:lavenderblush;"><button class="btn btn-success" id="btn_32">32</button></div>
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_33">33</button></div>
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_34">34</button></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_41">41</button></div>
+
+		<div class="col-xs-3" style="background-color:lavenderblush;"><button class="btn btn-success" id="btn_42">42</button></div>
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_43">43</button></div>
+		<div class="col-xs-3" style="background-color:lavender;"><button class="btn btn-success" id="btn_44">44</button></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-6" style="background-color:lavender;"><input id="btn_start" type="button" value="Start"></div>
+		<div class="col-xs-6" style="background-color:lavenderblush;"><input id="btn_score" type="button" value="Get Score"></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6" style="background-color:lavender;">Your Highest Score:</div>
+		<div class="col-xs-6" style="background-color:lavenderblush;"><div id="user_score"></div></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6" style="background-color:lavender;">Highest Score on Server:</div>
+		<div class="col-xs-6" style="background-color:lavender;"><div id="user_score2"></div></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6" style="background-color:lavender;">Your Current Score:</div>
+		<div class="col-xs-6" style="background-color:lavender;"><div id="user_score3"></div></div>
+	</div>
+</div>
+</body>
+
+<script>
+	var totalScore = 0
+	var x = document.getElementsByTagName("BUTTON");
+	var arrrr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+	$(document).ready(function(){
+		$("button").prop('disabled', true); // jQ way
+		$("button").click(function(){
+			totalScore += 1;
+			$("#user_score3").html(totalScore);
+			resetButtonActivatedStatus(arrrr[$.rand(arrrr.length)]);
+		});
+	});
+
+	// https://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
+	(function($) {
+			$.rand = function(arg) {
+					if ($.isArray(arg)) {
+							return arg[$.rand(arg.length)];
+					} else if (typeof arg === "number") {
+							return Math.floor(Math.random() * arg);
+					} else {
+							return 4;  // chosen by fair dice roll
+					}
+			};
+	})(jQuery);
+
+	function resetButtonActivatedStatus(num) {
+		var activeButtonList = document.getElementsByTagName("BUTTON");
+		$("button").prop('disabled', true); // jQ way
+		activeButtonList[num].disabled = false; // CSS
+		return "Hooray!"
+	}
+
+
+
+	$("#btn_start").click(function(){
+		totalScore = 0;
+		resetButtonActivatedStatus(0);
+		setTimeout(function(){ jsonCallScore(totalScore); }, 15000);
+
+    function jsonCallScore(totalScore) {
+			$("button").prop('disabled', true); // jQ way
+			var arr = { method: "store_score", parameter: totalScore };
+			$.ajax({
+					url: "{% url 'jsongoeshere' %}",
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) { // Upon receiving response, if success, identify response type and edit resourcs accordingly
+						jsonResponseResult = msg["value"];
+						//alert((JSON.parse(JSON.stringify(msg)))["responseText"]);
+					}, error: function(msg) {
+							alert(JSON.stringify(msg));
+					}
+			});
+		};
+	});
+	
+	
+	$("#btn_score").click(function(){
+		jsonCallRetrieve();
+
+    function jsonCallRetrieve() {
+			var arr = { method: "retrieve_score", parameter: "weeeee!" };
+			$.ajax({
+					url: "{% url 'jsongoeshere' %}",
+					type: 'POST',
+					data: JSON.stringify(arr),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					async: false,
+					success: function(msg) { // Upon receiving response, if success, identify response type and edit resourcs accordingly
+						jsonResponseResult = msg["result"];
+						jsonResponseResultServer = msg["result2"];
+						$("#user_score").html(jsonResponseResult);
+						$("#user_score2").html(jsonResponseResultServer);
+						//alert((JSON.parse(JSON.stringify(msg)))["responseText"]);
+					}, error: function(msg) {
+							alert(JSON.stringify(msg));
+					}
+			});
+		};
+	});
+
+
+
+	//
+	/**/
+
+	// TypeScript
+
+	// console.log()
+	// alert()
+	
+	// Worker ~~ Multitasking
+	// JS: ONLY 1 THREAD
+
+
+	// Event: fires
+	// Event: Gets handled
+	// Do stuff
+	// 	Function being called
+
+</script>
+
+
+
+
+</html>
