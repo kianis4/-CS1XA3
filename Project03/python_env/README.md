@@ -1,1 +1,5 @@
+# Project03 -- Whack a button with server side functionality
+
+Project 3 is a remake of the popular Whack a mole game known too many. In order to play, the user must first log on and register by making a username and password. This will be stored on ther server along with the users scores from that point on. Once the User logs in after following sign up prompts, the user has the option to proceed to the game or log out. If you choose to proceed to the game, you will see a grid alonf with 2 buttons at the bottom of the screen. Select "Get scores" too pull the players best score and the highest score stored on the server by any player. Once the player is ready too play, he can select the start game button. As soon as you click the button, buttons on the grid will begin to activate and light up. It is the players job to click as many of the randomized activasions possible in 15 seconds. The players current score will be displayed at the bottom of the grid. If the user goes back to the main login screen, they have the option to login, if they are an existing user, or log out if they are already signed in. The game is accessible at https://mac1xa3.ca/e/kianis4.
+
 
